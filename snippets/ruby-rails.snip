@@ -1,0 +1,268 @@
+snippet    bf
+abbr       before_filter
+  before_filter :${1:method}
+
+snippet    bt
+abbr       belongs_to
+  belongs_to :${1:association}
+
+snippet    defcreate
+abbr       def create
+  def create
+    @${1:model_class_name} = ${2:ModelClassName}.new(params[:$1])
+
+    respond_to do |wants|
+      if @$1.save
+        flash[:notice] = '$2 was successfully created.'
+        wants.html { redirect_to(@$1) }
+        wants.xml  { render :xml => @$1, :status => :created, :location => @$1 }
+      else
+        wants.html { render :action => "new" }
+        wants.xml  { render :xml => @$1.errors, :status => :unprocessable_entity }
+      end
+    end
+  end${3}
+
+snippet    defdestroy
+abbr       def destroy
+  def destroy
+    @${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
+    @$1.destroy
+
+    respond_to do |wants|
+      wants.html { redirect_to($1s_url) }
+      wants.xml  { head :ok }
+    end
+  end${3}
+
+snippet    defedit
+abbr       def edit
+  def edit
+    @${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
+  end
+
+snippet    defindex
+abbr       def index
+  def index
+    @${1:model_class_name} = ${2:ModelClassName}.all
+
+    respond_to do |wants|
+      wants.html # index.html.erb
+      wants.xml  { render :xml => @$1s }
+    end
+  end${3}
+
+snippet    defnew
+abbr       def new
+  def new
+    @${1:model_class_name} = ${2:ModelClassName}.new
+
+    respond_to do |wants|
+      wants.html # new.html.erb
+      wants.xml  { render :xml => @$1 }
+    end
+  end${3}
+
+snippet    defshow
+abbr       def show
+  def show
+    @${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
+
+    respond_to do |wants|
+      wants.html # show.html.erb
+      wants.xml  { render :xml => @$1 }
+    end
+  end${3}
+
+snippet    defupdate
+abbr       def update
+  def update
+    @${1:model_class_name} = ${2:ModelClassName}.find(params[:id])
+
+    respond_to do |wants|
+      if @$1.update_attributes(params[:$1])
+        flash[:notice] = '$2 was successfully updated.'
+        wants.html { redirect_to(@$1) }
+        wants.xml  { head :ok }
+      else
+        wants.html { render :action => "edit" }
+        wants.xml  { render :xml => @$1.errors, :status => :unprocessable_entity }
+      end
+    end
+  end${3}
+
+snippet    fina
+abbr       find all
+  find(:all<+, :conditions => ['<+<+field+> = ?+>', <+true+>]+>)
+
+snippet    finf
+abbr       find first
+  find(:first<+, :conditions => ['<+<+field+> = ?+>', <+true+>]+>)
+
+snippet    fini
+abbr       find id
+  find(<+id+>)
+
+snippet    finl
+abbr       find last
+  find(:last<+, :conditions => ['<+<+field+> = ?+>', <+true+>]+>)
+
+snippet    flash
+abbr       flash
+  flash[:${1:notice}] = "${2}"
+
+snippet    habtm
+abbr       habtm
+  has_and_belongs_to_many :${1:object}, :join_table => "${2:table_name}", :foreign_key => "${3}_id"${4}
+
+snippet    hm
+abbr       has many
+  has_many :${1:object}
+
+snippet    hmt
+abbr       has many through
+  has_many :${1:object}, :through => :${2:object}
+
+snippet    ho
+abbr       has one
+  has_one :${1:object}
+
+snippet    log
+abbr       log
+  RAILS_DEFAULT_LOGGER.${1:debug} ${2}
+
+snippet    logd
+abbr       log debug
+  logger.debug { "${1:message}" }${2}
+
+snippet    loge
+abbr       log error
+  logger.error { "${1:message}" }${2}
+
+snippet    logf
+abbr       log fatal
+  logger.fatal { "${1:message}" }${2}
+
+snippet    logi
+abbr       log info
+  logger.info { "${1:message}" }${2}
+
+snippet    logw
+abbr       log warn
+  logger.warn { "${1:message}" }${2}
+
+snippet    mapc
+abbr       map connect
+  ${1:map}.${2:connect} '${3:controller/:action/:id}'
+
+snippet    mapca
+abbr       map catch_all
+  ${1:map}.catch_all "*${2:anything}", :controller => "${3:default}", :action => "${4:error}"${5}
+
+snippet    mapr
+abbr       map resource
+  ${1:map}.resource :${2:resource}
+
+snippet    maprs
+abbr       map resources
+  ${1:map}.resources :${2:resource}
+
+snippet    mapwo
+abbr       map with options
+  ${1:map}.with_options :${2:controller} => '${3:thing}' do |$3|
+    ${4}
+  end
+
+snippet    mbs
+abbr       before save
+  before_save :${1:method}
+
+snippet    pa
+abbr       params
+  params[:${1:id}]${2}
+
+snippet    ra
+abbr       render action
+  render :action => "${1:action}"
+
+snippet    ral
+abbr       render action layout
+  render :action => "${1:action}", :layout => "${2:layoutname}"
+
+snippet    rest
+abbr       respond to
+  respond_to do |wants|
+    wants.${1:html} <+{ <++> }+>
+  end
+
+snippet    rf
+abbr       render file
+  render :file => "${1:filepath}"
+
+snippet    rjson
+abbr       render json
+  render :json => ${1:text to render}
+
+snippet    rl
+abbr       render layout
+  render :layout => "${1:layoutname}"
+
+snippet    rp
+abbr       render partial
+  render :partial => "${1:item}"
+
+snippet    rpc
+abbr       render partial collection
+  render :partial => "<+item+>", :collection => <+@<+item+>s+>
+
+snippet    rpl
+abbr       render partial locals
+  render :partial => "<+item+>", :locals => { :<+item+> => <+@<+item+>+><++> }
+
+snippet    rpo
+abbr       render partial object
+  render :partial => "<+item+>", :object => <+@<+item+>+>
+
+snippet    sha1
+abbr       sha1
+  Digest::SHA1.hexdigest(${1:string})
+
+snippet    va
+abbr       validates_associated
+  validates_associated :${1:attribute}
+
+snippet    vao
+abbr       validates_acceptance_of
+  validates_acceptance_of :${1:terms}
+
+snippet    vc
+abbr       validates_confirmation_of
+  validates_confirmation_of :${1:attribute}
+
+snippet    ve
+abbr       validates_exclusion_of
+  validates_exclusion_of :${1:attribute}, :in => ${2:%w( mov avi )}
+
+snippet    vf
+abbr       validates_format_of
+  validates_format_of :${1:attribute}, :with => /${2:regex}/
+
+snippet    vi
+abbr       validates_inclusion_of
+  validates_inclusion_of :${1:attribute}, :in => %w(${2: mov avi })
+
+snippet    vl
+abbr       validates_length_of
+  validates_length_of :${1:attribute}, :within => ${2:3}..${3:20}
+
+snippet    vn
+abbr       validates_numericality_of
+  validates_numericality_of :${1:attribute}
+
+snippet    vpo
+abbr       validates_presence_of
+  validates_presence_of :${1:attribute}
+
+snippet    vu
+abbr       validates_uniqueness_of
+  validates_uniqueness_of :${1:attribute}

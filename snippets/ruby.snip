@@ -1,0 +1,175 @@
+snippet    bm
+abbr       benchmark
+  TESTS = ${1:10_000}
+  Benchmark.bmbm do |results|
+    ${2}
+  end
+
+snippet    case
+abbr       case
+  case ${1}
+  when ${2}
+  else
+    ${3}
+  end
+
+snippet    class
+abbr       class
+  class ${1:`Snippet_RubyClassNameFromFilename()`}${2}
+    ${3}
+  end
+
+snippet    classe
+abbr       error class
+  class ${1:ErrorClassName} < ${2:StandardError}; end${3}
+
+snippet    def
+abbr       def
+  def ${1:name}
+    ${2}
+  end
+
+snippet    defi
+abbr       def & initialize
+  def initialize${1}
+    ${2}
+  end
+
+snippet    defmm
+abbr       def method missing
+  def method_missing(meth, *args, &blk)
+    ${1}
+  end
+
+snippet    defs
+abbr       def self
+  def self.${1:class_method_name}
+    ${2}
+  end
+
+snippet    do
+abbr       do
+  do
+    ${1}
+  end
+
+snippet    dop
+abbr       do with param
+  do |${1:param}|
+    ${2}
+  end
+
+snippet    ea
+abbr       each
+  each { |${1:element}| ${2:body} }
+
+snippet    each
+abbr       each
+each { |${1:element}| ${2:body} }
+
+snippet    each_with_index
+abbr       each_with_index
+  each_with_index { |${1:element},${2:i}| ${3:} }
+
+snippet    elsif
+abbr       elsif
+  elsif ${1:condition}
+    ${2}
+
+snippet    http_get
+abbr       get URL and parse
+  require 'net/http'
+  res = Net::HTTP.get URI.parse('${1:url}')
+
+snippet    http_post
+abbr       post URL
+  require 'net/http'
+  res = Net::HTTP.post_form URI.parse('${1:url}')${2:, params}
+
+snippet    if
+abbr       if
+  if ${1:condition}
+    ${2}
+  end
+
+snippet    ife
+abbr       if else
+  if ${1:condition}
+    ${2}
+  else
+  end
+
+snippet    inj
+abbr       inject
+  inject(${1:init}) { |${2:total}, ${3:next}| ${4:body} }
+
+
+snippet    ip
+abbr       get ip address
+  ip_addr = request.env['REMOTE_ADDR']
+
+snippet    map
+abbr       map
+  map { |${1:element}| ${2:body} }
+
+snippet    mod
+abbr       mod
+  module ${1:`Snippet_RubyClassNameFromFilename()`}
+    ${2}
+  end
+
+snippet    module
+abbr       module
+  module ${1:`Snippet_RubyClassNameFromFilename()`}
+    module ClassMethods
+      ${2}
+    end
+
+    module InstanceMethods
+
+    end
+
+    def self.included(receiver)
+      receiver.extend         ClassMethods
+      receiver.send :include, InstanceMethods
+    end
+  end
+
+snippet    r
+abbr       attr_reader
+  attr_reader :${1:attr_names}
+
+snippet    rd
+abbr       ruby-debug
+  require 'ruby-debug';debugger
+
+snippet    rw
+abbr       attr_accessor
+  attr_accessor :${1:attr_names}
+
+snippet    sort
+abbr       sort
+  sort { |${1:x},${2:y}| ${3:body} }
+
+snippet    task
+abbr       task
+  desc "${1:Task description}"
+  task :${2:task_name}${3: => [:dependent, :tasks]} do
+    ${4}
+  end
+
+snippet    unless
+abbr       unless
+  unless ${1:condition}
+    ${2}
+  end
+
+snippet    w
+abbr       attr_writer
+  attr_writer :${1:attr_names}
+
+snippet    while
+abbr       while
+  while ${1:condition}
+    ${2}
+  end

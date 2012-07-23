@@ -1,0 +1,185 @@
+snippet    anr
+abbr       and_return
+  and_return(${1:value})
+
+snippet    atl
+abbr       at_least
+  at_least(${1:n}).times
+
+snippet    atm
+abbr       at_most
+  at_most(${1:n}).times
+
+snippet    bef
+abbr       before
+  before(${1::each}) do
+    ${2}
+  end
+
+snippet    conn
+abbr       controller_name
+  controller_name :${1:controller}
+
+snippet    des
+abbr       describe
+  describe "${1:subject}" do
+    ${2}
+  end
+
+snippet    desrc
+abbr       describe resource controller
+  describe ${1:controller}, "${2:GET|POST|PUT|DELETE} ${3:/some/path}${4}" do
+    ${5}
+  end
+
+snippet    ex
+abbr       exactly
+  exactly(${1:n}).times
+
+snippet    it
+abbr       it
+  it "${1}" do
+    ${2}
+  end
+
+snippet    its
+abbr       it should
+  it "should ${1:do something}" do${2}
+
+snippet    itsp
+abbr       it should pending
+  it "should ${1:do something}"
+
+snippet    mm
+abbr       mock model
+  mock_model(${1:model})${2}
+
+snippet    moc
+abbr       mock
+  ${1:var} = mock("${2:mock_name}"${3:, :null_object => true})
+  ${4}
+
+snippet    on
+abbr       on
+  once
+
+snippet    resh
+abbr       require spec helper
+  require File.dirname(__FILE__) + '/../spec_helper'
+
+snippet    sh
+abbr       should
+  ${1:target}.should == ${2:value}
+  ${3}
+
+snippet    shb
+abbr       should be
+  ${1:target}.should be(${2:result})
+  ${3}
+
+snippet    shbr
+abbr       should be_redirect
+  response.should be_redirect
+  ${1}
+
+snippet    shbs
+abbr       should be_success
+  response.should be_success
+  ${1}
+
+snippet    shdm
+abbr       should match
+  ${1:target}.should match(/${2:regexp}/)
+  ${3}
+
+snippet    she
+abbr       should equal
+  ${1:target}.should eql(${2:value})
+  ${3}
+
+snippet    sheq
+abbr       should equal
+  ${1:target}.should equal(${2:value})
+  ${3}
+
+snippet    shh
+abbr       should have
+  ${1:target}.should have(${2:num}).${3:things}
+  ${4}
+
+snippet    shhal
+abbr       should have at_least
+  ${1:target}.should have_at_least(${2:num}).${3:things}
+  ${4}
+
+snippet    shn
+abbr       should_not
+  ${1:target}.should_not == ${2:value}
+  ${3}
+
+snippet    shnb
+abbr       should_not be
+  ${1:target}.should_not be(${2:result})
+  ${3}
+
+snippet    shne
+abbr       should_not equal
+  ${1:target}.should_not eql(${2:value})
+  ${3}
+
+snippet    shnm
+abbr       should_not match
+  ${1:target}.should_not match(/${2:regexp}/)
+  ${3}
+
+snippet    shnp
+abbr       should_not be ...
+  ${1:target}.should_not be_${2:predicate}
+
+snippet    shnr
+abbr       should_not_receive
+  ${1:mock}.should_not_receive(:${2:message})${3}
+  ${4}
+
+snippet    shnre
+abbr       should_not raise_error
+  ${1:target}.should_not raise_error(${2:error})
+  ${3}
+
+snippet    shnredt
+abbr       should_not redirect_to
+  response.should_not redirect_to(${1:url})
+  ${2}
+
+snippet    shp
+abbr       should be_...
+  ${1:target}.should be_${2:predicate}
+
+snippet    shr
+abbr       should_receive
+  ${1:mock}.should_receive(:${2:message})${3}
+  ${4}
+
+snippet    shre
+abbr       should raise_error
+  ${1:target}.should raise_error(${2:error})
+  ${3}
+
+snippet    shredt
+abbr       should redirect_to
+  response.should redirect_to(${1:url})
+  ${2}
+
+snippet    shrt
+abbr       should respond_to
+  ${1:target}.should respond_to(:${2:sym})
+  ${3}
+
+snippet    shtemp
+abbr       should render_template
+  response.should render_template(:${1:template})
+  ${2}
+
+snippet    tw
+abbr       twice
+  twice
